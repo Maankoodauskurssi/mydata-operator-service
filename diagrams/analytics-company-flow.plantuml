@@ -1,0 +1,90 @@
+@startuml
+
+actor Principal #lightGreen
+
+box "Analytics Firm" #LightBlue
+    participant Application #LightGreen
+	participant Sink
+end box
+
+box "Operators B" #LightYellow
+	participant "Application Consent Services"
+	participant "Datasource registry"
+end box
+
+box "Operators A" #pink
+	participant "User Consent services"
+end box
+
+box "TrustNetwork" #LightGreen
+	participant "Discovery service"
+end box
+
+box "Suunto" #violet
+	participant "DataSource"
+end box
+
+
+Principal -> Application : Install application To users machine
+Activate Application
+Application -> Application : Start New User Flow
+Note left
+    User may identify here
+end Note
+Application -> "Application Consent Services" : Prepare consent query
+Application <- "Application Consent Services" : Return consent token
+
+group Render registration ui with consent questions
+Application -> Application : Render registration form
+Application -> "Application Consent Services" : Request consent element
+Application <- "Application Consent Services" : Return and render consent flash
+Application -> Principal : Show Registration form
+Deactivate Application
+end group
+
+alt Optional case
+    Principal -> Application: Clicks "Show details" from consent element
+    Application -> "Principal" : Shows detailed consent element
+end alt
+
+Principal -> Application: Completes registration
+activate Application
+Principal -> "Application Consent Services" :  Accept consent request simultaneously
+activate "Application Consent Services"
+
+group Propagate user consent
+    Note right
+        This flow depends heavily on technology,
+        e.g. sovrin would change this a lost
+    end Note
+    "Application Consent Services" -> "Discovery service" : Find Users Operator
+    "Application Consent Services" <-- "Discovery service" : return reference to "Operator A"
+    "Application Consent Services" -> "User Consent services" : Create the approved consent for user
+    "Application Consent Services" <-- "User Consent services" : HTTPS 200 OK
+
+    "Application Consent Services" -> "Datasource registry" : Discover related datasource
+    Note right
+        If Datasource is not provided by this operator,
+        then a discovery service needs to be used.
+    end note
+    "Application Consent Services" <-- "Datasource registry" : return Datasource reference
+    "Application Consent Services" -> "DataSource" : create copy of the consent
+    "Application Consent Services" <-- "DataSource" : HTTPS 200 OK
+    deactivate "Application Consent Services"
+end group
+
+
+"Application" -> "Sink" : Notify potential consent creation for Principal
+Activate Sink
+"Sink" -> DataSource : Request users data
+"DataSource" -> DataSource : Validate consent approval
+
+"Sink" <- DataSource : Return users data
+"Sink" -> "Sink" : refine the data
+...
+"Application" <- "Sink" : Return value added data
+Deactivate Sink
+Application -> Principal : Show data
+Deactivate Application
+
+@enduml
