@@ -19,9 +19,11 @@ paths:
       parameters:
         - name: request
           in: body
-          description: The contents of the consent request.
+          description: An array of consents linked to the same consent request.
           schema:
-            $ref: '#/definitions/Request'
+            type: array
+            items:
+              $ref: '#/definitions/Request'
           required: true
       responses:
         200:
