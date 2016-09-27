@@ -1,0 +1,116 @@
+---
+swagger: "2.0"
+info:
+  version: "0.1 Maankoodauskurssi"
+  title: "MyData operator api"
+basePath: "/api"
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+  - text/xml
+produces:
+  - application/json
+paths:
+  /consent/request:
+    post:
+      description: |
+        Creates a new request for a consent.
+      parameters:
+        - name: request
+          in: body
+          description: The contents of the consent request.
+          schema:
+            $ref: '#/definitions/Request'
+          required: true
+      responses:
+        200:
+          description: "New request created successfully."
+
+
+definitions:
+        
+  Request:
+    type: object
+    properties:
+      Header:
+        $ref: "#/definitions/Header"
+      DataController:
+        $ref: "#/definitions/DataController"
+      Services:
+        $ref: "#/definitions/Services"
+        
+  Header:
+    type: object
+    properties:
+      version:
+        type: string
+      jurisdiction:
+        type: string
+      iat:
+        type: integer
+      moc:
+        type: string
+      jti:
+        type: string
+      publicKey:
+        type: string
+      policyUrli:
+        type: string
+      sub:
+        type: string
+      sensitive:
+        type: boolean
+      spiCat:
+        type: array
+        items: {}
+        
+  DataController:
+    type: object
+    properties:
+      onBehalf:
+        type: boolean
+      contact:
+        type: string
+      org:
+        type: string
+      address:
+        type: string
+      email:
+        type: string
+      phone:
+        type: string
+
+  Services:
+    type: array
+    items:
+      type: object
+      properties:
+        serviceName:
+          type: string
+        purposes:
+          type: array
+          items:
+            type: object
+            properties:
+              purpose:
+                type: string
+              consentType:
+                type: string
+              purposeCategory:
+                type: array
+                items:
+                  type: string
+              piiCategory:
+                type: array
+                items:
+                  type: string
+              nonCorePurpose:
+                type: boolean
+              purposeTermination:
+                type: string
+              thirdPartyDisclosure:
+                type: boolean
+              third3rdPartyName:
+                type: string

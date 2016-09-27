@@ -1,0 +1,15 @@
+{
+  "name": "mydata-oper-service",
+  "version": "0.0.1",
+  "description": "MyData operator mock service for storing and serving consents via RESTful API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antti Kettunen",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "nodemon": "^1.10.2"
+  }
+}
