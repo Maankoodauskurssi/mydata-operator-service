@@ -28,6 +28,24 @@ paths:
         200:
           description: "New request created successfully."
 
+  /consent/request/{requestId}:
+    get:
+      description: |
+        Creates a new request for a consent.
+      parameters:
+        - name: requestId
+          in: path
+          description: The request Id.
+          type: string
+          required: true
+      responses:
+        200:
+          description: Response content.
+          schema:
+            $ref: "#/definitions/Request"
+        404:
+          description: "Resource unavailable"
+
 
 definitions:
         
