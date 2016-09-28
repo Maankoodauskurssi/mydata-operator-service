@@ -1,15 +1,38 @@
 {
-  "name": "mydata-oper-service",
-  "version": "0.0.1",
-  "description": "MyData operator mock service for storing and serving consents via RESTful API.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Antti Kettunen",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.14.0",
-    "nodemon": "^1.10.2"
-  }
+    "name": "service",
+    "description": "",
+    "version": "1.0.0",
+    "author": "Antti Kettunen <antti.j.kettunen@tieto.com>",
+    "contributors": [],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/a-fox/service.git"
+    },
+    "bugs": "http://github.com/a-fox/service/issues",
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org"
+    },
+    "dependencies": {
+        "express": "^4.0.0",
+        "body-parser": "^1.15.0",
+        "swaggerize-express": "^4.0.0",
+        "swagmock": "~0.0.2"
+    },
+    "devDependencies": {
+        "eslint": "^2",
+        "istanbul": "~0.4.3",
+        "is-my-json-valid": "^2.13.1",
+        "js-yaml": "^3.2.6",
+        "supertest": "^1.2.0",
+        "swagger-parser": "^3.4.1",
+        "tape": "^4"
+    },
+    "scripts": {
+        "start": "nodemon server.js",
+        "test": "tape 'tests/**/*.js'",
+        "cover": "istanbul cover tape -- 'tests/**/*.js'",
+        "lint": "eslint .",
+        "regenerate": "yo swaggerize:test --framework express --apiPath './config/swagger.yaml'"
+    },
+    "main": "./server"
 }

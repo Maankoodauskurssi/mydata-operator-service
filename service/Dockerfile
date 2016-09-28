@@ -8,8 +8,8 @@ COPY package.json /service
 RUN npm install
 COPY . /service
 
-# Expose port 3000
-EXPOSE 3000
+# Expose port 8000
+EXPOSE 8000
 
 # Run
-CMD ["npm", "run"]
+CMD ["npm", "start"]
