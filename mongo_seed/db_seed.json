@@ -1,0 +1,112 @@
+[
+    {
+        "version": "0.9",
+        "jurisdiction": "FI",
+        "iat": "1475678200",
+        "moc": "operator",
+        "jti": "cf091d42-8b09-11e6-ae22-56b6b6499611",
+        "publicKey": "123",
+        "policyUrl": "http://example.com/policy", 
+        "sub": "eppu.esimerkki@eemail.fi",
+        "sensitive": false, 
+        "spiCat": [], 
+        "DataController": {
+            "onBehalf": false,
+            "contact": "John Willie",
+            "org": "World Wildlife Fund",
+            "address": "1250 24th Street, N.W. Washington, DC 20037",
+            "email": "consents@wwfus.org",
+            "phone": "1-800-960-0993",
+            "description": "WWF on yli sadassa maassa toimiva, maailman vaikuttavin ympäristöjärjestö. Tukijamme ovat mukana pelastamassa maailman ainutlaatuisimpia luontokokonaisuuksia."
+        },
+        "Services": [{
+            "serviceName": "WWF Ekologinen jalanjälki",
+            "serviceDescription": "World Wildlife Fund pyytää lupaa käyttää tietojasi kertaluontoisesti ekologisen jalanjälkesi laskemiseen. World Wildlife Fund ei säilytä tietojasi, käytä niitä muihin tarkoituksiin tai jaa niitä eteenpäin.",
+            "purposes": [{
+                "purpose": "Kulutustietojen käyttäminen ekologisen jalanjäljen laskemiseksi",
+                "purposeCategory": ["Personointi"],
+                "piiCategory": ["Profilointi"],
+                "nonCorePurpose": false,
+                "purposeTermination": "Kertakäyttöinen",
+                "thirdPartyDisclosure": false,
+                "thirdPartyName": ""
+            }]
+        }]
+    },
+    {
+        "version": "0.9", 
+        "jurisdiction": "FI",
+        "iat": "1475678200", 
+        "moc": "operator",
+        "jti": "cf091d42-8b09-11e6-ae22-56b6b6499612", 
+        "publicKey": "123", 
+        "policyUrl": "http://example.com/policy",
+        "sub": "eppu.esimerkki@eemail.fi",
+        "sensitive": false,
+        "spiCat": [], 
+        "DataController": {
+            "onBehalf": false,
+            "contact": "Jani Jalkanen",
+            "org": "H&M Hennes & Mauritz Oy",
+            "address": "Aleksanterinkatu 48 B, 9.krs",
+            "email": "info@hm.com",
+            "phone": "+358 9 3434 9531",
+            "description": "H&M eli Hennes & Mauritz (täydelliseltä nimeltään H & M Hennes & Mauritz AB (publ)) on ruotsalainen kansainvälisesti toimiva vähittäiskaupan konserni, jonka valikoimissa on naisten, miesten ja lasten vaatteita sekä kosmetiikkaa sekä vuodesta 2009 kodintekstiilejä (H&M Home). "
+        },
+        "Services": [{
+            "serviceName": "Markkinointiviestintä",
+            "purposes": [{
+                "purpose": "Tarjouksien ja mainosten lähettäminen",
+                "purposeCategory": ["Markkinointi"],
+                "piiCategory": ["Profilointi"],
+                "nonCorePurpose": true,
+                "purposeTermination": "Kunnes asiakassuhde päättyy",
+                "thirdPartyDisclosure": false,
+                "thirdPartyName": ""
+            }]
+        }]
+    },
+    {
+        "version": "0.9",
+        "jurisdiction": "FI",
+        "iat": "1475678200", 
+        "moc": "operator", 
+        "jti": "cf091d42-8b09-11e6-ae22-56b6b6499613", 
+        "publicKey": "123", 
+        "policyUrl": "http://example.com/policy",
+        "sub": "eppu.esimerkki@eemail.fi",
+        "sensitive": false, 
+        "spiCat": [],
+        "DataController": {
+            "onBehalf": false,
+            "contact": "Anna Homén",
+            "org": "Itis",
+            "address": "Itäkatu 1-7 00930 Helsinki",
+            "email": "anna.homen@wereldhave.com",
+            "phone": "+358 9 3436 4826",
+            "description": "Suomen suurin kauppakeskus Itis avasi ovensa vuonna 1984. Siitä alkaen se on tarjonnut asiakkailleen ainutlaatuisen tunnelman, jonka kokee kaikilla aisteilla. Uniikkia ja vaikuttavaa arkkitehtuuria edustava ostosympäristö kätkee sisäänsä yli 150 myymälää ja lukuisia kahviloita ja ravintoloita. Ja ennen kaikkea kansainvälisen ja ystävällisen ilmapiirin."
+        },
+        "Services": [{
+            "serviceName": "Markkinointiviestintä",
+            "purposes": [{
+                "purpose": "Tarjouksien ja mainosten lähettäminen",
+                "purposeCategory": ["Markkinointi"],
+                "piiCategory": ["Profilointi"],
+                "nonCorePurpose": true,
+                "purposeTermination": "Kunnes asiakassuhde päättyy",
+                "thirdPartyDisclosure": true,
+                "thirdPartyName": "Itäkeskuksen kauppiaat ja liikeet"
+            },
+            {
+                "purpose": "Liikkumisen seuranta Itäkeskuksen sisällä",
+                "purposeCategory": ["Käyttäytyminen"],
+                "piiCategory": ["Sijainti"],
+                "nonCorePurpose": true,
+                "purposeTermination": "Kun poistuu Itäkeskuksesta",
+                "thirdPartyDisclosure": false,
+                "thirdPartyName": ""
+            }
+            ]
+        }]
+    }
+]
