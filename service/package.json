@@ -1,14 +1,14 @@
 {
-    "name": "service",
+    "name": "mydata-operator-service",
     "description": "",
     "version": "1.0.0",
     "author": "Antti Kettunen <antti.j.kettunen@tieto.com>",
     "contributors": [],
     "repository": {
         "type": "git",
-        "url": "git://github.com/a-fox/service.git"
+        "url": "git://github.com/Maankoodauskurssi/mydata-operator-service.git"
     },
-    "bugs": "http://github.com/a-fox/service/issues",
+    "bugs": "https://github.com/Maankoodauskurssi/mydata-operator-service/issues",
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
     },
@@ -16,7 +16,10 @@
         "express": "^4.0.0",
         "body-parser": "^1.15.0",
         "swaggerize-express": "^4.0.0",
-        "swagmock": "~0.0.2"
+        "swagmock": "~0.0.2",
+        "nodemon": "^1.10.2",
+        "mongoose": "^4.6.2",
+        "escape-html": "*"
     },
     "devDependencies": {
         "eslint": "^2",
@@ -28,7 +31,7 @@
         "tape": "^4"
     },
     "scripts": {
-        "start": "nodemon server.js",
+        "start": "node server.js",
         "test": "tape 'tests/**/*.js'",
         "cover": "istanbul cover tape -- 'tests/**/*.js'",
         "lint": "eslint .",

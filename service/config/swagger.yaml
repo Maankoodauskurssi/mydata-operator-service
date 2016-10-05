@@ -1,8 +1,9 @@
-swagger: '2.0'
+---
+swagger: "2.0"
 info:
-  version: 0.1 Maankoodauskurssi
-  title: MyData operator api
-basePath: /api
+  version: "0.1 Maankoodauskurssi"
+  title: "MyData operator api"
+basePath: "/api"
 schemes:
   - http
   - https
@@ -25,12 +26,13 @@ paths:
               $ref: '#/definitions/Request'
           required: true
       responses:
-        '200':
-          description: Returns Consent Receipt ID and status of the request.
-  '/consent/request/{requestId}':
+        200:
+          description: "Returns Consent Receipt ID and status of the request."
+
+  /consent/request/{requestId}:
     get:
       description: |
-        Creates a new request for a consent.
+        Gets detailed consent request information, defined by consent ID.
       parameters:
         - name: requestId
           in: path
@@ -38,26 +40,43 @@ paths:
           type: string
           required: true
       responses:
-        '200':
+        200:
           description: Response content.
           schema:
-            $ref: '#/definitions/Request'
-        '404':
-          description: Resource unavailable
+            $ref: "#/definitions/Request"
+        404:
+          description: "Resource unavailable"
+
   /consent/receipt:
     post:
-      description: Creates a new consent receipt.
+      description: "Creates a new consent receipt."
       responses:
-        '200':
-          description: Returns Consent Receipt ID and status of the request.
+        200:
+          description: "Returns Consent Receipt ID and status of the request."
           schema:
             type: string
-            description: JWT token of the consent receipt request.
-  '/consent/receipt/{consentId}':
+            description: "JWT token of the consent receipt request."
     get:
-      description: >
-        Gets full information about the consent receipt and its status,
-        determined by the consent_id parameter.
+      description: "Gets detailed consent receipt data."
+      parameters:
+        - name: subjectId
+          in: query
+          type: string
+          description: "Id of the consent subject (the data owner)"
+          required: true
+      responses:
+        200:
+          description: "Returns all consent receipts for given user."
+          schema:
+            $ref: "#/definitions/Receipt"
+            
+        
+
+
+  /consent/receipt/{consentId}:
+    get:
+      description: |
+        Gets full information about the consent receipt and its status, determined by the consentId parameter.
       parameters:
         - name: consentId
           in: path
@@ -65,29 +84,42 @@ paths:
           description: Id of the consent receipt.
           required: true
       responses:
-        '200':
-          description: Returns Consent Receipt ID and status of the request.
+        200:
+          description: "Returns Consent Receipt ID and status of the request."
           schema:
             type: string
             description: JWT token of the consent receipt request.
+
 definitions:
+  Receipt:
+    type: object
+    properties:
+      consentType:
+        type: string
+        description: "String indicating the type of consent: receipt, notice or request."
+      Header:
+        $ref: "#/definitions/Header"
+      DataController:
+        $ref: "#/definitions/DataController"
+      Services:
+        $ref: "#/definitions/Services"
+        
   Request:
     type: object
     properties:
       Header:
-        $ref: '#/definitions/Header'
+        $ref: "#/definitions/Header"
       DataController:
-        $ref: '#/definitions/DataController'
+        $ref: "#/definitions/DataController"
       Services:
-        $ref: '#/definitions/Services'
+        $ref: "#/definitions/Services"
+        
   Header:
     type: object
     properties:
       version:
         type: string
-        description: >-
-          This indicates what version of the Kantara specification this receipt
-          conforms to.
+        description: This indicates what version of the Kantara specification this receipt conforms to.
       jurisdiction:
         type: string
       iat:
@@ -104,14 +136,13 @@ definitions:
         type: string
       sub:
         type: string
-        description: >-
-          Subject provided identifier, email address - or Claim,
-          defined/namespace.
+        description: Subject provided identifier, email address - or Claim, defined/namespace.
       sensitive:
         type: boolean
       spiCat:
         type: array
         items: {}
+        
   DataController:
     type: object
     properties:
@@ -127,6 +158,7 @@ definitions:
         type: string
       phone:
         type: string
+
   Services:
     type: array
     items:

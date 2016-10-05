@@ -32,7 +32,7 @@ paths:
   /consent/request/{requestId}:
     get:
       description: |
-        Creates a new request for a consent.
+        Gets detailed consent request information, defined by consent ID.
       parameters:
         - name: requestId
           in: path
@@ -49,19 +49,34 @@ paths:
 
   /consent/receipt:
     post:
-      description: Creates a new consent receipt.
+      description: "Creates a new consent receipt."
       responses:
         200:
           description: "Returns Consent Receipt ID and status of the request."
           schema:
             type: string
-            description: JWT token of the consent receipt request.
+            description: "JWT token of the consent receipt request."
+    get:
+      description: "Gets detailed consent receipt data."
+      parameters:
+        - name: subjectId
+          in: query
+          type: string
+          description: "Id of the consent subject (the data owner)"
+          required: true
+      responses:
+        200:
+          description: "Returns all consent receipts for given user."
+          schema:
+            $ref: "#/definitions/Receipt"
+            
+        
 
 
   /consent/receipt/{consentId}:
     get:
       description: |
-        Gets full information about the consent receipt and its status, determined by the consent_id parameter.
+        Gets full information about the consent receipt and its status, determined by the consentId parameter.
       parameters:
         - name: consentId
           in: path
@@ -76,7 +91,20 @@ paths:
             description: JWT token of the consent receipt request.
 
 definitions:
-  request:
+  Receipt:
+    type: object
+    properties:
+      consentType:
+        type: string
+        description: "String indicating the type of consent: receipt, notice or request."
+      Header:
+        $ref: "#/definitions/Header"
+      DataController:
+        $ref: "#/definitions/DataController"
+      Services:
+        $ref: "#/definitions/Services"
+        
+  Request:
     type: object
     properties:
       header:

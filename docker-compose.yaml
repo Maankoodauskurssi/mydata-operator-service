@@ -1,10 +1,14 @@
 # Docker Compose for MyData operator services
 version: "2"
 services:
-  web:
-    build: service
-    volumes:
-      - "./service:/service"
+#  web:
+#    build: ./ui
+#    links:
+#      - service
+#    ports:
+#      - "80:80"
+  service:
+    build: ./service
     links:
       - mongo
     ports:
