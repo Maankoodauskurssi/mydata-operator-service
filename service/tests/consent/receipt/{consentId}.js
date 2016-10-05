@@ -26,7 +26,7 @@ Test('/consent/receipt/{consentId}', function (t) {
         t.ok(api, 'Valid swagger api');
         /**
          * summary: 
-         * description: Gets full information about the consent receipt and its status, determined by the consent_id parameter.
+         * description: Gets full information about the consent receipt and its status, determined by the consentId parameter.
 
          * parameters: consentId
          * produces: 

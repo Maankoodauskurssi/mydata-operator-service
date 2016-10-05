@@ -26,7 +26,7 @@ Test('/consent/request/{requestId}', function (t) {
         t.ok(api, 'Valid swagger api');
         /**
          * summary: 
-         * description: Creates a new request for a consent.
+         * description: Gets detailed consent request information, defined by consent ID.
 
          * parameters: requestId
          * produces: 

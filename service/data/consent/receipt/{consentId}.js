@@ -6,7 +6,7 @@ var Mockgen = require('../../mockgen.js');
 module.exports = {
     /**
      * summary: 
-     * description: Gets full information about the consent receipt and its status, determined by the consent_id parameter.
+     * description: Gets full information about the consent receipt and its status, determined by the consentId parameter.
 
      * parameters: consentId
      * produces: 

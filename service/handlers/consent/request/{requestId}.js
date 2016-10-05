@@ -6,7 +6,7 @@ var dataProvider = require('../../../data/consent/request/{requestId}.js');
 module.exports = {
     /**
      * summary: 
-     * description: Creates a new request for a consent.
+     * description: Gets detailed consent request information, defined by consent ID.
 
      * parameters: requestId
      * produces: 

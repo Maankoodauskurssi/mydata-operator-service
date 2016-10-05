@@ -73,6 +73,55 @@ Test('/consent/receipt', function (t) {
                     t.end();
                 });
             });
+        });/**
+         * summary: 
+         * description: Gets detailed consent receipt data.
+         * parameters: subjectId
+         * produces: 
+         * responses: 200
+         */
+        t.test('test  get operation', function (t) {
+            Mockgen().requests({
+                path: '/consent/receipt',
+                operation: 'get'
+            }, function (err, mock) {
+                var request;
+                t.error(err);
+                t.ok(mock);
+                t.ok(mock.request);
+                //Get the resolved path from mock request
+                //Mock request Path templates({}) are resolved using path parameters
+                request = Request(App)
+                    .get('/api' + mock.request.path);
+                if (mock.request.body) {
+                    //Send the request body
+                    request = request.send(mock.request.body);
+                } else if (mock.request.formData){
+                    //Send the request form data
+                    request = request.send(mock.request.formData);
+                    //Set the Content-Type as application/x-www-form-urlencoded
+                    request = request.set('Content-Type', 'application/x-www-form-urlencoded');
+                }
+                // If headers are present, set the headers.
+                if (mock.request.headers && mock.request.headers.length > 0) {
+                    Object.keys(mock.request.headers).forEach(function (headerName) {
+                        request = request.set(headerName, mock.request.headers[headerName]);
+                    });
+                }
+                request.end(function (err, res) {
+                    t.error(err, 'No error');
+                    t.ok(res.statusCode === 200, 'Ok response status');
+                    var Validator = require('is-my-json-valid');
+                    var validate = Validator(api.paths['/consent/receipt']['get']['responses']['200']['schema']);
+                    var response = res.body;
+                    if (Object.keys(response).length <= 0) {
+                        response = res.text;
+                    }
+                    t.ok(validate(response), 'Valid response');
+                    t.error(validate.errors, 'No validation errors');
+                    t.end();
+                });
+            });
         });
     });
 });
