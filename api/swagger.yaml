@@ -68,7 +68,7 @@ paths:
         200:
           description: "Returns all consent receipts for given user."
           schema:
-            $ref: "#/definitions/Receipt"
+            $ref: "#/definitions/receipt"
             
         
 
@@ -91,20 +91,20 @@ paths:
             description: JWT token of the consent receipt request.
 
 definitions:
-  Receipt:
+  receipt:
     type: object
     properties:
       consentType:
         type: string
         description: "String indicating the type of consent: receipt, notice or request."
       Header:
-        $ref: "#/definitions/Header"
+        $ref: "#/definitions/header"
       DataController:
-        $ref: "#/definitions/DataController"
+        $ref: "#/definitions/dataController"
       Services:
-        $ref: "#/definitions/Services"
+        $ref: "#/definitions/services"
         
-  Request:
+  request:
     type: object
     properties:
       header:
