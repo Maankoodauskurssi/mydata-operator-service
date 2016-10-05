@@ -1,7 +1,7 @@
 [
     {
         "version": "0.9",
-        "consentReceiptType": "request",
+        "consentReceiptType": "receipt",
         "jurisdiction": "FI",
         "iat": "1475678200",
         "moc": "operator",

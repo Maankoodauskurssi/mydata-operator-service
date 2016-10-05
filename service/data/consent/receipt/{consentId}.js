@@ -1,5 +1,5 @@
 'use strict';
-var Mockgen = require('../../mockgen.js');
+var Consent = require('../../../models/Consent.js');
 /**
  * Operations on /consent/receipt/{consentId}
  */
@@ -16,8 +16,8 @@ module.exports = {
     get: {
         200: function (req, res, callback) {
             var query;
-            if ( req.query.requestId !== undefined)
-                query = { 'jti': req.query.requestId, 'consentReceiptType': 'receipt'};
+            if ( req.params.consentId !== undefined)
+                query = { 'jti': req.params.consentId, 'consentReceiptType': 'receipt'};
 
             Consent.find(query, function(err, requests) {
                 if (err)
