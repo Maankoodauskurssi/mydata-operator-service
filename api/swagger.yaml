@@ -136,6 +136,8 @@ definitions:
       properties:
         serviceName:
           type: string
+        policyUrl:
+          type: string
         purposes:
           type: array
           items:
@@ -149,8 +151,6 @@ definitions:
                 type: array
                 items:
                   type: string
-              policyUrl:
-                type: string
               piiCategory:
                 type: array
                 items:
