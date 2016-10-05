@@ -2,19 +2,17 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ConsentSchema = new Schema({
-    consentType: String,
-    Header: {
-        version: String,
-        jurisdiction: String,
-        iat: Number,
-        moc: String,
-        jti: String,
-        publicKey: String,
-        policyUrl: String,
-        sub: String,
-        sensitive: Boolean,
-        spiCat: [String],
-    },
+    consentReceiptType: String,
+    version: String,
+    jurisdiction: String,
+    iat: Number,
+    moc: String,
+    jti: String,
+    publicKey: String,
+    policyUrl: String,
+    sub: String,
+    sensitive: Boolean,
+    spiCat: [String],
     DataController: {
         onBehalf: Boolean,
         contact: String,

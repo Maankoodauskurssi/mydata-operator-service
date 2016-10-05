@@ -15,15 +15,16 @@ module.exports = {
      */
     get: {
         200: function (req, res, callback) {
-            /**
-             * Using mock data generator module.
-             * Replace this by actual data for the api.
-             */
-            Mockgen().responses({
-                path: '/consent/receipt/{consentId}',
-                operation: 'get',
-                response: '200'
-            }, callback);
+            var query;
+            if ( req.query.requestId !== undefined)
+                query = { 'jti': req.query.requestId, 'consentReceiptType': 'receipt'};
+
+            Consent.find(query, function(err, requests) {
+                if (err)
+                    res.send(err);
+
+                res.json(requests);
+            });
         }
     }
 };

@@ -17,7 +17,11 @@ module.exports = {
      */
     get: {
         200: function (req, res, callback) {
-            Consent.find(function(err, requests) {
+            var query;
+            if ( req.query.requestId !== undefined)
+                query = { 'jti': req.query.requestId, 'consentReceiptType': 'request'};
+
+            Consent.find(query, function(err, requests) {
             if (err)
                 res.send(err);
 

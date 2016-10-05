@@ -1,6 +1,7 @@
 [
     {
         "version": "0.9",
+        "consentReceiptType": "request",
         "jurisdiction": "FI",
         "iat": "1475678200",
         "moc": "operator",
@@ -34,7 +35,8 @@
         }]
     },
     {
-        "version": "0.9", 
+        "version": "0.9",
+        "consentReceiptType": "request", 
         "jurisdiction": "FI",
         "iat": "1475678200", 
         "moc": "operator",
@@ -68,6 +70,7 @@
     },
     {
         "version": "0.9",
+        "consentReceiptType": "request",
         "jurisdiction": "FI",
         "iat": "1475678200", 
         "moc": "operator", 

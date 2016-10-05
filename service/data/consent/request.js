@@ -16,8 +16,10 @@ module.exports = {
      */
     post: {
         200: function (req, res, callback) {
+            var data = req.body;
+            data.consentReceiptType = "request";
 
-            var consentReq = new Consent(req.body);
+            var consentReq = new Consent(data);
 
             consentReq.save(function(err, saved_data) {
                 if (err)
