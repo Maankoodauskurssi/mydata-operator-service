@@ -37,5 +37,6 @@ var ConsentSchema = new Schema({
         }],
     }],
 });
-                        
-module.exports = mongoose.model('Consent', ConsentSchema);
+
+// Consent model, using ConsentSchema, saved into consents MongoDB collection
+module.exports = mongoose.model('Consent', ConsentSchema, 'consents');
