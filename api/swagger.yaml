@@ -23,7 +23,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Request'
+              $ref: '#/definitions/request'
           required: true
       responses:
         200:
@@ -43,7 +43,7 @@ paths:
         200:
           description: Response content.
           schema:
-            $ref: "#/definitions/Request"
+            $ref: "#/definitions/request"
         404:
           description: "Resource unavailable"
 
@@ -76,17 +76,17 @@ paths:
             description: JWT token of the consent receipt request.
 
 definitions:
-  Request:
+  request:
     type: object
     properties:
-      Header:
-        $ref: "#/definitions/Header"
-      DataController:
-        $ref: "#/definitions/DataController"
-      Services:
-        $ref: "#/definitions/Services"
+      header:
+        $ref: "#/definitions/header"
+      dataController:
+        $ref: "#/definitions/dataController"
+      services:
+        $ref: "#/definitions/services"
         
-  Header:
+  header:
     type: object
     properties:
       version:
@@ -113,7 +113,7 @@ definitions:
         type: array
         items: {}
         
-  DataController:
+  dataController:
     type: object
     properties:
       onBehalf:
@@ -129,7 +129,7 @@ definitions:
       phone:
         type: string
 
-  Services:
+  services:
     type: array
     items:
       type: object
