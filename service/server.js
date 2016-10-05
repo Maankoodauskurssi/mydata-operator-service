@@ -11,6 +11,11 @@ var App = Express();
 
 var Server = Http.createServer(App);
 
+var cors = require('cors')
+
+App.use(cors());
+
+
 App.use(BodyParser.json());
 App.use(BodyParser.urlencoded({
     extended: true
