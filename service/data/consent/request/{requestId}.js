@@ -1,5 +1,7 @@
 'use strict';
 var Mockgen = require('../../mockgen.js');
+var Consent = require('../../../models/Consent');
+
 /**
  * Operations on /consent/request/{requestId}
  */
@@ -15,15 +17,12 @@ module.exports = {
      */
     get: {
         200: function (req, res, callback) {
-            /**
-             * Using mock data generator module.
-             * Replace this by actual data for the api.
-             */
-            Mockgen().responses({
-                path: '/consent/request/{requestId}',
-                operation: 'get',
-                response: '200'
-            }, callback);
+            Consent.find(function(err, requests) {
+            if (err)
+                res.send(err);
+
+            res.json(requests);
+        });
         },
         404: function (req, res, callback) {
             /**

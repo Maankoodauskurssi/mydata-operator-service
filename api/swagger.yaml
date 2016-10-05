@@ -21,7 +21,7 @@ paths:
           in: body
           description: An array of consents linked to the same consent request.
           schema:
-            type: array
+            type: object
             items:
               $ref: '#/definitions/request'
           required: true

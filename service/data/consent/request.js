@@ -1,5 +1,7 @@
 'use strict';
 var Mockgen = require('../mockgen.js');
+var Consent = require('../../models/Consent.js');
+
 /**
  * Operations on /consent/request
  */
@@ -14,15 +16,20 @@ module.exports = {
      */
     post: {
         200: function (req, res, callback) {
-            /**
-             * Using mock data generator module.
-             * Replace this by actual data for the api.
-             */
-            Mockgen().responses({
-                path: '/consent/request',
-                operation: 'post',
-                response: '200'
-            }, callback);
+
+            var consentReq = new Consent(req.body);
+
+            consentReq.save(function(err, saved_data) {
+                if (err)
+                    res.send(err);
+                
+                var response = {
+                    requestId: saved_data._id,
+                    status: "pending"
+                };
+                
+                res.json(response);
+            });
         }
     }
 };

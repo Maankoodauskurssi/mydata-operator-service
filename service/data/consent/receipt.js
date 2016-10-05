@@ -18,12 +18,12 @@ module.exports = {
              * Using mock data generator module.
              * Replace this by actual data for the api.
              */
-            /*Mockgen().responses({
+            Mockgen().responses({
                 path: '/consent/receipt',
                 operation: 'post',
                 response: '200'
             }, callback);
-            */
+            
         }
     },
     /**
@@ -41,13 +41,13 @@ module.exports = {
              * Using mock data generator module.
              * Replace this by actual data for the api.
              */
-            /*
+            
             Mockgen().responses({
                 path: '/consent/receipt',
                 operation: 'get',
                 response: '200'
             }, callback);
-            */
+            
         }
     }
 };
