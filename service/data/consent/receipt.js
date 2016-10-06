@@ -1,5 +1,7 @@
 'use strict';
 var Mockgen = require('../mockgen.js');
+var Consent = require('../../models/Consent.js');
+
 /**
  * Operations on /consent/receipt
  */
@@ -14,16 +16,21 @@ module.exports = {
      */
     post: {
         200: function (req, res, callback) {
-            /**
-             * Using mock data generator module.
-             * Replace this by actual data for the api.
-             */
-            Mockgen().responses({
-                path: '/consent/receipt',
-                operation: 'post',
-                response: '200'
-            }, callback);
-            
+            var data = req.body;
+            data.consentReceiptType = "receipt";
+
+            var consentReq = new Consent(data);
+
+            consentReq.save(function(err, saved_data) {
+                if (err)
+                    res.send(err);
+                
+                var response = {
+                    requestId: saved_data._id
+                };
+                
+                res.json(response);
+            });
         }
     },
     /**
@@ -36,18 +43,17 @@ module.exports = {
      */
     get: {
         200: function (req, res, callback) {
-           
-            /**
-             * Using mock data generator module.
-             * Replace this by actual data for the api.
-             */
+            var query;
+            if ( req.body.subjectId !== undefined )
+                query = {'sub': req.body.subjectId};
+
+            Consent.find(query, function(err, requests) {
+                if (err)
+                    res.send(err);
+
+                res.json(requests);
             
-            Mockgen().responses({
-                path: '/consent/receipt',
-                operation: 'get',
-                response: '200'
-            }, callback);
-            
+            });
         }
     }
 };

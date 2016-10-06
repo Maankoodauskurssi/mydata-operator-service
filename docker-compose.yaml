@@ -1,19 +1,26 @@
 # Docker Compose for MyData operator services
 version: "2"
 services:
-#  web:
-#    build: ./ui
-#    links:
-#      - service
-#    ports:
-#      - "80:80"
+ # web:
+  #  build: https://github.com/Maankoodauskurssi/mydata-operator-front.git
+  #  links:
+  #    - service
+  #  ports:
+  #    - "80:3000"
   service:
     build: ./service
     links:
       - mongo
     ports:
       - "8000:8000"
+  
+  mongo_seed:
+    build: ./mongo_seed
+    links:
+      - mongo
+
   mongo:
     image: mongo
     ports:
       - "27017:27017"
+  

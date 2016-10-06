@@ -21,7 +21,7 @@ App.use(BodyParser.urlencoded({
     extended: true
 }));
 
-mongoose.connect("mongodb://mongo:27017");
+mongoose.connect("mongodb://mongo:27017/mydata");
 var Consent = require('./models/Consent');
 
 App.use(Swaggerize({

@@ -1,6 +1,6 @@
 'use strict';
 var Mockgen = require('../../mockgen.js');
-var Consent = require('../../../models/Consent');
+var Consent = require('../../../models/Consent.js');
 
 /**
  * Operations on /consent/request/{requestId}
@@ -17,12 +17,16 @@ module.exports = {
      */
     get: {
         200: function (req, res, callback) {
-            Consent.find(function(err, requests) {
-            if (err)
-                res.send(err);
+            var query;
+            if ( req.params.requestId !== undefined)
+                query = { 'jti': req.params.requestId, 'consentReceiptType': 'request'};
 
-            res.json(requests);
-        });
+            Consent.find(query, function(err, requests) {
+                if (err)
+                    res.send(err);
+
+                res.json(requests);
+            });
         },
         404: function (req, res, callback) {
             /**

@@ -7,8 +7,8 @@ WORKDIR /service
 COPY . /service
 RUN npm install
 
-# Expose port 3000
-EXPOSE 3000
+# Expose port 8000
+EXPOSE 8000
 
 # Run
 CMD ["npm", "start"]
