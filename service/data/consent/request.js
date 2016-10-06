@@ -7,12 +7,12 @@ var Consent = require('../../models/Consent.js');
  */
 module.exports = {
     /**
-     * summary: 
+     * summary:
      * description: Creates a new request for a consent.
      * parameters: request
-     * produces: 
+     * produces:
      * responses: 200
-     * operationId: 
+     * operationId:
      */
     post: {
         200: function (req, res, callback) {
@@ -21,17 +21,18 @@ module.exports = {
 
             var consentReq = new Consent(data);
 
-            consentReq.save(function(err, saved_data) {
+            consentReq.save(function (err, saved_data) {
                 if (err)
                     res.send(err);
-                
-                var response = {
-                    requestId: saved_data.jti,
-                    status: "pending"
-                };
-                
-                res.json(response);
+
             });
+
+            var response = {
+                requestId: data['header'].jti,
+                status: "pending"
+            };
+
+            res.json(response);
         }
     }
 };
