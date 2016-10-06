@@ -26,7 +26,7 @@ module.exports = {
                     res.send(err);
                 
                 var response = {
-                    requestId: saved_data._id,
+                    requestId: saved_data.jti,
                     status: "pending"
                 };
                 
